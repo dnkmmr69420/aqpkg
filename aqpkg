@@ -5,10 +5,14 @@ export AQPKG_USER=$HOME/.local/share/aquaproj-aqua
 
 source /etc/aqpkg.conf
 
+if [ -f /etc/aqpkg.conf ]; then
+    source /etc/aqpkg.conf
+fi
+
 if [ -f ~/.config/aqpkg.conf ]; then
-    source ~/.config/apkg.conf
+    source ~/.config/aqpkg.conf
 else
-    touch ~/.config/apkg.conf
+    touch ~/.config/aqpkg.conf
 fi
 
 if (( $EUID = 0 )); then
