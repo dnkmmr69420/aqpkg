@@ -1,1 +1,21 @@
 #!/usr/bin/env bash
+
+if (( $EUID = 0 )); then
+    echo "Error, use --system flag"
+    exit 1
+fi
+
+
+case $1 in
+  init)
+    echo "initing..."
+    
+    ;;
+  aqua-init)
+    echo "Stopping..."
+    ;;
+  *)
+    echo ""
+    ;;
+esac
+
