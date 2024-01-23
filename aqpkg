@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+export AQPKGP_SYSTEM=/var/lib/aquaproj-aqua
+export AQPKG_USER=$HOME/.local/share/aquaproj-aqua
+
 source /etc/aqpkg.conf
 
 if [ -f ~/.config/aqpkg.conf ]; then
@@ -7,7 +10,6 @@ if [ -f ~/.config/aqpkg.conf ]; then
 else
     touch ~/.config/apkg.conf
 fi
-source ~/.config/aqpkg.conf
 
 if (( $EUID = 0 )); then
     echo "use -s flag for system wide package management"
