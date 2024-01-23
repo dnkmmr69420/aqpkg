@@ -1,9 +1,37 @@
 #!/usr/bin/env bash
 
+source /etc/aqpkg.conf
+source ~/.config/aqpkg.conf
+
 if (( $EUID = 0 )); then
-    echo "Error, use --system flag"
+    echo "use -s flag for system wide package management"
     exit 1
 fi
+
+while getopts ":s:" option; do
+  case $option in
+    *)
+      case $1 in
+      init)
+        echo "initing..."
+    
+        ;;
+      aqua-init)
+        echo "Stopping..."
+        ;;
+      *)
+        echo ""
+        ;;
+    esac
+      ;;
+    s)
+      # code to execute when flag2 is provided
+      ;;
+    *)
+      # code to execute when an unknown flag is provided
+      ;;
+  esac
+done
 
 
 case $1 in
