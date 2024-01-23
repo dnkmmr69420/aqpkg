@@ -29,10 +29,22 @@ while getopts ":s:" option; do
       *)
         echo ""
         ;;
-    esac
-      ;;
+        esac
+          ;;
     s)
-      # code to execute when flag2 is provided
+      case $1 in
+      init)
+        sudo mkdir /var/lib/aquaproj-aqua
+        sudo ln -s /root/.local/share/aquaproj-aqua /var/lib/aquaproj-aqua
+        sudo curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.2.0/aqua-installer | bash
+        ;;
+      aqua-init)
+        echo "Stopping..."
+        ;;
+      *)
+        echo ""
+        ;;
+        esac
       ;;
     *)
       # code to execute when an unknown flag is provided
