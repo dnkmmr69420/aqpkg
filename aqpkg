@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 source /etc/aqpkg.conf
+
+if [ -f ~/.config/aqpkg.conf ]; then
+    source ~/.config/apkg.conf
+else
+    touch ~/.config/apkg.conf
+fi
 source ~/.config/aqpkg.conf
 
 if (( $EUID = 0 )); then
@@ -13,8 +19,7 @@ while getopts ":s:" option; do
     *)
       case $1 in
       init)
-        echo "initing..."
-    
+        curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.2.0/aqua-installer | bash
         ;;
       aqua-init)
         echo "Stopping..."
@@ -34,16 +39,4 @@ while getopts ":s:" option; do
 done
 
 
-case $1 in
-  init)
-    echo "initing..."
-    
-    ;;
-  aqua-init)
-    echo "Stopping..."
-    ;;
-  *)
-    echo ""
-    ;;
-esac
 
